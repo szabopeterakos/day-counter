@@ -1,4 +1,8 @@
 import { Component } from "@angular/core";
+import { version } from "../../package.json";
+// to avoid @ ts-ignore then instead of tsconfig.app.json add the lines to the tsconfig.json
+// https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-9.html#new---resolvejsonmodule
+
 
 import moment from "moment";
 
@@ -16,8 +20,10 @@ export class AppComponent {
   minutes;
   weeks;
   years;
+  version = version;
 
   constructor() {
+    console.log(`version: ${version}`)
     var duration = moment.duration(this.endDate.diff(moment()));
     this.hours = duration.asHours();
     this.minutes = duration.asMinutes().toFixed(0);
