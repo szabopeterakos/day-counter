@@ -9,7 +9,21 @@ import moment from "moment";
 })
 export class AppComponent {
   title = "day-counter";
-  counterValue_ = moment().startOf("month");
-  counterValue__ = moment().to(moment("20210315"));
-  counterValue = moment("20210315").fromNow();
+  endDate = moment("20210409 00:00","YYYYMMDD HH:mm");
+  counterValue;
+  more;
+  hours;
+  minutes;
+  weeks;
+  years;
+
+  constructor() {
+    var duration = moment.duration(this.endDate.diff(moment()));
+    this.hours = duration.asHours();
+    this.minutes = duration.asMinutes().toFixed(0);
+    this.weeks = duration.asWeeks().toFixed(3);
+    this.years = duration.asYears().toFixed(3);
+    this.counterValue = this.endDate.fromNow();
+    this.more = moment();
+  }
 }

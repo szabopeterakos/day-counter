@@ -118,13 +118,19 @@
   }
 
   .card.highlight-card {
-    background-color: #1976d2;
+    background-color: #3a363c;
     color: white;
     font-weight: 600;
     border: none;
     width: auto;
     min-width: 30%;
     position: relative;
+  }
+
+  .card.card.highlight-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .card.card.highlight-card span {
@@ -331,6 +337,7 @@
     </svg>
 
     <span>{{ title | titlecase }} app for Gabriella!</span>
+    <span>{{ endDate.format("YY-MM-DD HH:mm a") }}</span>
 
     <svg
       id="rocket-smoke"
@@ -352,7 +359,13 @@
 
   <!-- Terminal -->
   <div class="terminal">
-    <pre>{{ counterValue | titlecase }} you will known...</pre>
+    <pre>{{ counterValue | titlecase }} (or {{hours.toFixed(2)}} hours) you will known...</pre>
+    <pre>in hours: {{ hours.toFixed(0) }} </pre>
+    <pre>in minutes: {{ minutes }} </pre>
+    <pre>in weeks: {{ weeks }} </pre>
+    <pre>in years: {{ years }} </pre>
+    <pre>Refreshed at:</pre>
+    <pre>{{ more.format("YY-MM-DD hh:mm:ss a dddd ") }}</pre>
   </div>
 
   <svg
